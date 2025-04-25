@@ -1,0 +1,170 @@
+/* Theme variables */
+#notion-ai-enhancer-popup {
+    --bg-color: var(--theme-bg, #ffffff);
+    --text-color: var(--theme-text, #37352f);
+    --border-color: var(--theme-border, rgba(0, 0, 0, 0.1));
+    --button-bg: var(--theme-button-bg, #f7f7f7);
+    --button-hover: var(--theme-button-hover, #efefef);
+    --button-active: var(--theme-button-active, #e8e8e8);
+    --result-bg: var(--theme-result-bg, #f7f7f7);
+    --error-bg: var(--theme-error-bg, #fff1f1);
+    --error-color: var(--theme-error, #eb5757);
+    --success-color: var(--theme-success, #2ecc71);
+    --success-hover: var(--theme-success-hover, #27ae60);
+}
+
+/* Dark theme support */
+.dark-theme #notion-ai-enhancer-popup,
+[data-theme="dark"] #notion-ai-enhancer-popup,
+.notion-dark-theme #notion-ai-enhancer-popup {
+    --theme-bg: #2f3437;
+    --theme-text: #ffffff;
+    --theme-border: rgba(255, 255, 255, 0.1);
+    --theme-button-bg: #37393a;
+    --theme-button-hover: #454748;
+    --theme-button-active: #505254;
+    --theme-result-bg: #37393a;
+    --theme-error-bg: rgba(235, 87, 87, 0.1);
+    --theme-error: #ff6b6b;
+    --theme-success: #00b167;
+    --theme-success-hover: #00955b;
+}
+
+#notion-ai-enhancer-popup {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 400px;
+    border: 1px solid var(--border-color);
+    animation: popup-fade-in 0.2s ease-out;
+    color: var(--text-color);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 8px auto;
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--text-color);
+    animation: spin 0.8s linear infinite;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 16px 0;
+}
+
+.loading-text {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes popup-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#notion-ai-enhancer-popup button {
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+    font-weight: 500;
+    flex: 1;
+    min-width: 80px;
+    max-width: calc(50% - 4px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+#notion-ai-enhancer-popup button:hover {
+    background-color: var(--button-hover);
+    border-color: var(--border-color);
+    transform: translateY(-1px);
+}
+
+#notion-ai-enhancer-popup button:active {
+    background-color: var(--button-active);
+    transform: translateY(0);
+}
+
+/* Style for the result container */
+#notion-ai-enhancer-popup div:not(:last-child):not(.loading-container):not(.loading-spinner):not(.loading-text) {
+    font-size: 14px;
+    color: var(--text-color);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: var(--result-bg);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+}
+
+/* Error messages */
+#notion-ai-enhancer-popup div[style*="color: red"],
+#notion-ai-enhancer-popup div:has(+ button[onclick*="removePopup"]) {
+    color: var(--error-color);
+    font-size: 13px;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-color);
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+/* Copy button specific styles */
+#notion-ai-enhancer-popup button:has(+ button[onclick*="removePopup"]) {
+    background-color: var(--success-color);
+    color: white;
+    border-color: transparent;
+}
+
+#notion-ai-enhancer-popup button:has(+ button[onclick*="removePopup"]):hover {
+    background-color: var(--success-hover);
+}
+
+/* Close button specific styles */
+#notion-ai-enhancer-popup button[onclick*="removePopup"] {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+#notion-ai-enhancer-popup button[onclick*="removePopup"]:hover {
+    background-color: var(--button-bg);
+    opacity: 1;
+} 

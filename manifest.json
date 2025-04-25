@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Notion AI Enhancer",
+  "version": "1.0",
+  "description": "Enhance selected text on Notion pages using AI.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://api.openai.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.notion.so/*"],
+      "js": ["content.js"],
+      "css": ["style.css"]
+    }
+  ],
+  "action": {
+    "default_title": "Notion AI Enhancer Settings (Not Used Yet)"
+  }
+} 
