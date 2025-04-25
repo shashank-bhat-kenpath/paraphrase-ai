@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Notion AI Enhancer",
+  "name": "Paraphrase AI",
   "version": "1.0",
   "description": "Enhance selected text on Notion pages using AI.",
   "permissions": [
@@ -13,12 +13,15 @@
   ],
   "content_scripts": [
     {
-      "matches": ["*://*.notion.so/*"],
+      "matches": [
+        "*://*.notion.so/*",
+        "*://docs.google.com/document/d/*"
+      ],
       "js": ["content.js"],
       "css": ["style.css"]
     }
   ],
   "action": {
-    "default_title": "Notion AI Enhancer Settings (Not Used Yet)"
+    "default_title": "Paraphrase AI Settings"
   }
 } 
